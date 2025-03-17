@@ -1,0 +1,33 @@
+<launch>
+  <!-- Path to PX4-Autopilot - override this when launching if needed -->
+  <arg name="px4_path" default="$(env HOME)/Desktop/drone_landing/src/PX4-Autopilot" />
+  
+  <!-- Launch Gazebo with our custom world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find drone_vision_landing)/worlds/landing_pad.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="verbose" value="true"/>
+    <arg name="debug" value="false"/>
+  </include>  
+  
+  <!-- Launch MAVROS -->
+  <include file="$(find mavros)/launch/px4.launch">
+    <arg name="fcu_url" value="udp://:14540@localhost:14556"/>
+    <arg name="log_output" value="log"/>
+  </include>
+  
+  <!-- Landing detector node -->
+  <node name="landing_detector" pkg="drone_vision_landing" type="landing_detector.py" output="screen">
+    <param name="camera_topic" value="/iris/usb_cam/image_raw"/>
+    <param name="landing_target_size" value="0.5"/>
+  </node>
+  
+  <!-- Set PX4 path environment variable for the script -->
+  <env name="PX4_AUTOPILOT_PATH" value="$(arg px4_path)" />
+  
+  <!-- Launch PX4 SITL at the end -->
+  <node name="px4_sitl" pkg="drone_vision_landing" type="px4_sitl_launcher.sh" 
+        output="screen" launch-prefix="bash" required="true"/>
+</launch>

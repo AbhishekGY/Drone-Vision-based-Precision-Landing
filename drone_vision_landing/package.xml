@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>drone_vision_landing</name>
+  <version>0.0.1</version>
+  <description>Vision-based precision landing for drones in Gazebo</description>
+
+  <maintainer email="abhi.f16@gmail.com">Abhishek</maintainer>
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <depend>roscpp</depend>
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>cv_bridge</depend>
+  <depend>image_transport</depend>
+  <depend>mavros</depend>
+  <depend>mavros_msgs</depend>
+  <depend>gazebo_ros</depend>
+  <depend>gazebo_msgs</depend>
+  
+  <build_depend>message_generation</build_depend>
+  <exec_depend>message_runtime</exec_depend>
+  
+  <export>
+  </export>
+</package>
