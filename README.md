@@ -53,7 +53,7 @@ This project implements a vision-based precision landing system for drones using
 ### PX4 Autopilot
 This project requires PX4 Autopilot for drone simulation. Before running:
 
-1. Install PX4 Autopilot by following the [official installation guide](https://docs.px4.io/master/en/dev_setup/building_px4.html)
+1. Install PX4 Autopilot by following the [official installation guide](https://docs.px4.io/main/en/dev_setup/building_px4.html#gazebo-classic)
 
 2. **Update the PX4 path in the launcher script:**
    ```bash
@@ -77,7 +77,7 @@ This configuration only needs to be done once after cloning the repository.
 1. Clone this repository into your catkin workspace:
    ```bash
    cd ~/catkin_ws/src
-   git clone https://github.com/your-username/drone-vision-landing.git
+   git clone https://github.com/AbhishekGY/drone-vision-landing.git
    ```
 
 2. Install dependencies:
@@ -109,7 +109,6 @@ roslaunch drone_vision_landing precision_landing.launch px4_path:=/path/to/your/
 ```
 
 This will start Gazebo, MAVROS, the landing detector, and the PX4 SITL simulation.
-   ```
 
 ## Landing Detection Algorithm
 
